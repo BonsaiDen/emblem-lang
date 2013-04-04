@@ -23,7 +23,7 @@ console.log('Generated Parser into "lib/parser.js"');
 // Some simple tests
 var Ast = require('./lib/Ast');
 
-var source = 'l += foo.bar[2]((2 ** 2 // 2), foo, 4)';
+var source = 'l += !foo.bar[2]((2 ** 2 // 2), foo, 4)';
 var tree = new Ast(source);
 console.log(util.inspect(tree.tree, false, 4));
 
