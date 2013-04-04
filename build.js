@@ -27,8 +27,12 @@ var source = 'l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]';
 var tree = new Ast(source);
 console.log(util.inspect(tree.tree, false, 10));
 
+console.log(tree.toString());
 
-console.log(tree.generate());
+tree.visit(function(node, parent, depth) {
+    console.log(new Array(depth * 4).join(' '), ' -', node.type, '=>', node.toString());
+
+}, true);
 
 //var code = '~!(+true) + (-2) * (++e) / 5 * foo()[2..(1 - 3)] + @foo.bar[2 + 2] - (a ? b : c) // 2 + @ + a > b && c < d || 4 != 5 - foo(1, 2, 3, foo = 2 + 2, bla...)';
 
