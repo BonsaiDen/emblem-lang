@@ -21,9 +21,14 @@ console.log('Generated Parser into "lib/parser.js"');
 
 
 // Some simple tests
-var parser = require('./lib/parser');
+var Ast = require('./lib/Ast');
+
+var source = 'l += foo.bar[2]((2 ** 2 // 2), foo, 4)';
+var tree = new Ast(source);
+console.log(util.inspect(tree.tree, false, 4));
+
+
+console.log(tree.generate());
 
 //var code = '~!(+true) + (-2) * (++e) / 5 * foo()[2..(1 - 3)] + @foo.bar[2 + 2] - (a ? b : c) // 2 + @ + a > b && c < d || 4 != 5 - foo(1, 2, 3, foo = 2 + 2, bla...)';
-var code = 'foo.bar[2](2 * 2, foo, 4)';
-console.log(util.inspect(parser.parse(code), false, 4));
 
