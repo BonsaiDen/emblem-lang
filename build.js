@@ -2,9 +2,9 @@ var fs = require('fs'),
     util = require('util'),
     jison = require('jison');
 
-var lexer = require('./lib/lexer'),
-    grammar = require('./lib/grammar'),
-    operators = require('./lib/operators');
+var lexer = require('./lib/parser/bison/lexer'),
+    grammar = require('./lib/parser/bison/grammar'),
+    operators = require('./lib/parser/bison/operators');
 
 var gen = new jison.Generator({
     lex: lexer,
@@ -14,20 +14,21 @@ var gen = new jison.Generator({
 });
 
 var source = gen.generateModule();
-source += '\nvar nodes = require("./nodes");\nexports.parse = function(source) { var p = new parser.Parser(); p.yy = nodes; return p.parse(source);};';
-fs.writeFileSync('lib/parser.js', source);
+source += '\nvar nodes = require("./nodes/all");\nexports.parse = function(source) { var p = new parser.Parser(); p.yy = nodes; return p.parse(source);};';
+fs.writeFileSync('lib/parser/parser.generated.js', source);
 
-console.log('Generated Parser into "lib/parser.js"');
 
+// Test -----------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 // Some simple tests
-var Ast = require('./lib/Ast');
+var Ast = require('./lib/parser/Ast');
 
 var source = 'l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]';
 var tree = new Ast(source);
 console.log(util.inspect(tree.tree, false, 10));
 
-console.log(tree.toString());
+//console.log(tree.toString());
 
 tree.visit(function(node, parent, depth) {
     console.log(new Array(depth * 4).join(' '), ' -', node.type, '=>', node.toString());
