@@ -1,5 +1,6 @@
 scope {
-    l = 3
-    l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]
-    l -= 2
+    l = 3 + 3 * 3
+    f = 'foo' * 2
+    o = true == true
+    o = 2 != 2 && 'foo' == 'foo'
 }
