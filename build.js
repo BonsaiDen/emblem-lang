@@ -22,18 +22,34 @@ fs.writeFileSync('lib/parser/parser.generated.js', source);
 // ----------------------------------------------------------------------------
 
 // Some simple tests
-var Ast = require('./lib/parser/Ast');
+function testAST() {
 
-var source = 'l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]';
-var tree = new Ast(source);
-console.log(util.inspect(tree.tree, false, 10));
+    var Ast = require('./lib/parser/Ast');
 
-//console.log(tree.toString());
+    var source = 'l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]';
+    var tree = new Ast(source);
+    console.log(util.inspect(tree.tree, false, 10));
 
-tree.visit(function(node, parent, depth) {
-    console.log(new Array(depth * 4).join(' '), ' -', node.type, '=>', node.toString());
+    //console.log(tree.toString());
 
-}, true);
+    tree.visit(function(node, parent, depth) {
+        console.log(new Array(depth * 4).join(' '), ' -', node.type, '=>', node.toString());
 
-//var code = '~!(+true) + (-2) * (++e) / 5 * foo()[2..(1 - 3)] + @foo.bar[2 + 2] - (a ? b : c) // 2 + @ + a > b && c < d || 4 != 5 - foo(1, 2, 3, foo = 2 + 2, bla...)';
+    }, true);
+
+    //var code = '~!(+true) + (-2) * (++e) / 5 * foo()[2..(1 - 3)] + @foo.bar[2 + 2] - (a ? b : c) // 2 + @ + a > b && c < d || 4 != 5 - foo(1, 2, 3, foo = 2 + 2, bla...)';
+
+
+}
+
+var Compiler = require('./lib/compiler/Compiler');
+
+var emblem = new Compiler();
+
+// Test name resolving
+emblem.compile('modules.mod'); // File
+emblem.compile('modules.bar.test'); // File
+emblem.compile('modules.bar.ignore'); // file
+emblem.compile('modules.bar.lum'); // Index
+emblem.compile('modules.bar.foo.test'); // File
 
