@@ -1,42 +1,44 @@
 scope {
-    int l = 0
-    string f
 
-    l = 3 + 3 * 3
-    f = 'foo' * 2
+    int l = 3 + 3 * 3;
+    
+    map[int, string] numberNames = {
+        0: 'Zero',
+        1: 'One',
+        2: 'Two',
+        3: 'Three',
+        4: 'Four',
+        5: 'Five',
+        6: 'Six'
+    };
 
-    bool o = true == true
-    o = 2 != 2 && 'foo' == 'foo'
+    numberNames[7] = 'Seven';
+    numberNames[8] = 'Eight';
+    numberNames[9] = 'Nine';
+    numberNames[10] = 'Ten';
 
-    string m = 'Hello World'
-    int len = #m
+    int numberNameCount = #numberNames;
 
-    string q = 'foo' + 'foo'
+    list[int] squares = [1 ** 1, 1 ** 2, 1 ** 3, 1 ** 4, 1 ** 5];
 
-    int i = 2
-    i += 4
+    int first = squares[0];
 
-    int num = (int)'2'
+    string firstName = 'Ivo';
+    string lastName = 'Wetzel';
 
-    list[int] numbers
-    numbers += 1
-    numbers += numbers
+    string initials = firstName[1] + lastName[0];
 
-    list[int] others = numbers + numbers
+    int num = (int)'2';
 
-    list[int] some = others[0:5]
-    list[int] bla = (some[0:5] = others)
+    list[int] numbers;
+    numbers += 1;
+    numbers += numbers;
 
-    map[int, string] names
+    list[int] others;
+    list[int] some = others[0:];
+    list[int] bla = (some[0:5] = others);
 
-    names[1] = 'One'
-    names[2] = 'Two'
-    names[3] = 'Three'
-
-    string name = names[1]
-
-    map[int, list[int]] foo
-    foo[1] = numbers
+    `Hello \`World`;
 
 }
 
