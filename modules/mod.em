@@ -2,6 +2,7 @@ scope {
 
     int l = 3 + 3 * 3;
     
+    ~~ A bunch numbers mapped to strings
     map[int, string] numberNames = {
         0: 'Zero',
         1: 'One',
@@ -19,6 +20,10 @@ scope {
 
     int numberNameCount = #numberNames;
 
+    ~~~
+    List assignments
+    inside a multi line comment
+    ~~~
     list[int] squares = [1 ** 1, 1 ** 2, 1 ** 3, 1 ** 4, 1 ** 5];
 
     int first = squares[0];
@@ -39,6 +44,17 @@ scope {
     list[int] bla = (some[0:5] = others);
 
     `Hello \`World`;
+
+    ~~list[int] foo = [];
+    
+    struct User {
+        string name,
+        int id
+    };
+
+    int test() {
+        
+    }
 
 }
 
