@@ -47,6 +47,7 @@ scope {
 
     ~~list[int] foo = [];
     
+    ~~~
     struct User {
         string name,
         int id
@@ -55,6 +56,7 @@ scope {
     int test() {
         
     }
+    ~~~
 
 }
 

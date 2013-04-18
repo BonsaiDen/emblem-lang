@@ -1,5 +1,4 @@
 var fs = require('fs'),
-    util = require('util'),
     jison = require('jison');
 
 var lexer = require('./lib/parser/bison/lexer'),
@@ -21,35 +20,11 @@ fs.writeFileSync('lib/parser/parser.generated.js', source);
 // Test -----------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-// Some simple tests
-function testAST() {
-
-    var Ast = require('./lib/parser/Ast');
-
-    var source = 'l += (!foo.bar[2]((2 ** 2 // 2), foo, 4))[2:@foo]';
-    var tree = new Ast(source);
-    console.log(util.inspect(tree.tree, false, 10));
-
-    //console.log(tree.toString());
-
-    tree.visit(function(node, parent, depth) {
-        console.log(new Array(depth * 4).join(' '), ' -', node.type, '=>', node.toString());
-
-    }, true);
-
-    //var code = '~!(+true) + (-2) * (++e) / 5 * foo()[2..(1 - 3)] + @foo.bar[2 + 2] - (a ? b : c) // 2 + @ + a > b && c < d || 4 != 5 - foo(1, 2, 3, foo = 2 + 2, bla...)';
-
-
-}
-
 var Compiler = require('./lib/compiler/Compiler');
 
 var emblem = new Compiler();
 
 // Test name resolving
-emblem.compile('modules.mod'); // File
-emblem.compile('modules.bar.test'); // File
-emblem.compile('modules.bar.ignore'); // file
-emblem.compile('modules.bar.lum'); // Index
-emblem.compile('modules.bar.foo.test'); // File
+emblem.getModule('modules.mod'); // File
+emblem.getModule('modules.im'); // File
 
