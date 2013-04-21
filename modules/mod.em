@@ -58,5 +58,9 @@ scope {
     }
     ---
 
+    import modules.x;
+
+    string foo = x.bar;
+
 }
 
