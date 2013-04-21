@@ -1,9 +1,12 @@
-import modules.global as g;
-
-string foo = g;
-
 string name = 'Test';
 export name;
 
-~~export name as *
+export name as foo;
+
+
+int number = 2;
+float f = 10.5;
+
+export number;
+export f;
 
