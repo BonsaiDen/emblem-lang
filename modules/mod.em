@@ -20,6 +20,8 @@ scope {
 
     int numberNameCount = #numberNames;
 
+    list[int] someNumbers = [0..10];
+
     ---
     List assignments
     inside a multi line comment
@@ -28,8 +30,9 @@ scope {
 
     int first = squares[0];
 
-    string firstName = 'Ivo';
-    string lastName = 'Wetzel';
+    const string firstName = 'Ivo';
+    const string lastName = 'Wetzel';
+    -- firstName = 'foo';
 
     string initials = firstName[1] + lastName[0];
 
