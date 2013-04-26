@@ -1,9 +1,17 @@
 scope {
 
     int l = 3 + 3 * 3;
+    int hex = 0x43;
+
+    map[int, mutable list[int]] intLists = {
+        0: [1, 2],
+        1: [1, 2]
+    };
+
+    intLists[0][1] = 1;
     
-    -- A bunch numbers mapped to strings
-    map[int, string] numberNames = {
+    -- A bunch of numbers mapped to strings
+    mutable map[int, string] numberNames = {
         0: 'Zero',
         1: 'One',
         2: 'Two',
@@ -18,6 +26,9 @@ scope {
     numberNames[9] = 'Nine';
     numberNames[10] = 'Ten';
 
+    map[int, string] otherMap = {};
+    --otherMap[0] = 'mutable';
+
     int numberNameCount = #numberNames;
 
     list[int] someNumbers = [0..10];
@@ -30,25 +41,30 @@ scope {
 
     int first = squares[0];
 
-    const string firstName = 'Ivo';
-    const string lastName = 'Wetzel';
+    string firstName = 'Ivo';
+    string lastName = 'Wetzel';
     -- firstName = 'foo';
 
     string initials = firstName[1] + lastName[0];
 
     int num = (int)'2';
 
-    list[int] numbers;
+    mutable list[int] numbers;
     numbers += 1;
     numbers += numbers;
 
     list[int] others;
-    list[int] some = others[0:];
+    mutable list[int] some = others[0:];
     list[int] bla = (some[0:5] = others);
 
     `Hello \`World`;
 
-    --list[int] foo = [];
+    -- parse by changing lexer to see a string as multiple parts
+    -- expands can only be expressions
+    -- below would be string['Hello ', Identifier, ' ', Identifier, ...]
+    string greet = 'Hello #{firstName} #{lastName}! How are you today?';
+
+    list[int] empty = [];
     
     ---
     struct User {
@@ -64,6 +80,16 @@ scope {
     import modules.x;
 
     string foo = x.bar;
+
+    if true {
+        int c;
+
+    } elif false {
+        int a;
+
+    } else {
+        int b;
+    }
 
 }
 

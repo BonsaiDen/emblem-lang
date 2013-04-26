@@ -44,8 +44,49 @@ __Resulting JavaScript__
 
 The Project just started, only initial development is done. 
 
-Below's a extremely incomplete listing of done and outstanding tasks.
+Belows a list of upcoming milestones and their targets.
 
+1. Milestone
+
+    - Compile in emblem runtime on demand
+    - Finish support for slicing operators - Done
+    - Support list literals and slicing - Done
+    - Support map literals  - Done
+
+        - Map keys must be int or string or castable to any of those two - Done
+        - Support weakmaps?
+
+    - Add full import / export support - Halfway Done
+
+2. Milestone
+
+    - Support ranges
+    - Support constant variables
+    - String interpolation
+
+3. Milestone
+
+    - Add support for warnings
+        - warn about re-defined operators
+
+4. Milestone
+
+    - Support if / else / elif
+    - Support try / except / finally
+    - Support forin
+
+5. Milestone
+
+    - Support properties
+    - Support struct types
+
+6. Milestone
+
+    - Support functions
+    - Allow for overloading call operator
+
+
+Below's a extremely incomplete listing of other both done and outstanding tasks.
 
 ### Type System
 
@@ -63,26 +104,26 @@ Below's a extremely incomplete listing of done and outstanding tasks.
     - Unary Operators and code gen ✓ 
     - Postfix Operators and code gen ✓ 
     - Index Operators and code gen ✓ 
-    - Call "Operator" and code gen ✓ 
+    - Call "Operator" and code gen 
 
 - Lists
 
-    - Grammar for declarations
-    - Grammar for list literals
+    - Grammar for declarations ✓ 
+    - Grammar for list literals ✓ 
 
-        - Validation of type unity in list literals
+        - Validation of type unity in list literals ✓ 
 
-    - Compile time generation item type variants
+    - Compile time generation item type variants ✓ 
 
 - Maps
 
-    - Grammar for declarations
+    - Grammar for declarations ✓ 
 
-    - Grammar for map literals
+    - Grammar for map literals ✓ 
 
-        - Validation of key/value type unity in map literals
+        - Validation of key/value type unity in map literals ✓ 
 
-    - Compile time generation of different key/value pair variants
+    - Compile time generation of different key/value pair variants ✓ 
 
 - Properties and Functions on Types
 
@@ -115,4 +156,5 @@ Below's a extremely incomplete listing of done and outstanding tasks.
     
     - Basic import / export for testing ✓ 
     - Fully, correct working import / export system (probably Python alike)
+        - missing export as module support and module type with constant properties for correct lookup
 
