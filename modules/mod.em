@@ -26,12 +26,13 @@ scope {
     numberNames[9] = 'Nine';
     numberNames[10] = 'Ten';
 
-    map[int, string] otherMap = {};
+    map[int, string] otherMap = {}; -- TODO fix empty map / list assignments
     --otherMap[0] = 'mutable';
 
     int numberNameCount = #numberNames;
 
-    list[int] someNumbers = [0..10];
+    list[int] someNumbers = 0..10; -- this is a list with a .. range?!
+    list[int] fooNumbers = (2 + 2)..10;
 
     ---
     List assignments
@@ -64,7 +65,9 @@ scope {
     -- below would be string['Hello ', Identifier, ' ', Identifier, ...]
     string greet = 'Hello #{firstName} #{lastName}! How are you today?';
 
-    list[int] empty = [];
+    mutable list[int] empty = [];
+
+    empty = [];
     
     ---
     struct User {
@@ -90,6 +93,80 @@ scope {
     } else {
         int b;
     }
+
+    -- TODO warn on unused variables
+    -- add "usage" flag to resolveName and increment the counter
+    -- so identifiers etc. can automatically handle this
+    int e = 2;
+    --mutable int l;
+
+    ---
+
+    -- later on, see if e is primitive and warn / optimize
+    match e { -- no new scope here there isn't anything inside, ignore the body/block
+        case 0 {  -- NEW scope
+            l = 3; 
+        }
+        case 1 { 
+            l = 4; 
+        }
+        case 2 { 
+            l = 5; 
+        }
+        case 3 { 
+            l = 6; 
+        }
+    }
+
+    -- TODO throw error when there's no possible exit path out of the loop
+    -- build branch anaylizer...
+    -- creates a new scope
+    loop {
+        
+    } 
+
+    -- creates a new scope
+
+    -- creates a new scope
+    loop e {
+        leave; -- TODO fail if leave is not inside loop or each
+    }
+
+    -- support as to modify the value before running the loop?
+    -- each int a in numbers as (string)a {}
+    -- creates a new scope
+    each int n in numbers {
+        
+    }
+
+    -- creates a new scope!
+    each int k, string v in numberNames {
+        
+    }
+
+    -- TODO fix [] requirement...
+    -- TODO scope needs a method for generating a unique name for one time usage
+    --      this also needs support in templating syntax???
+    each int i in [0..10] {
+        
+    }
+
+    -- TODO support python style with? Or a fixed version of the JS one?
+    -- with e {} 
+    -- struct e; with e { memberA;}
+
+    try {
+        
+    } except e {
+        
+    } finally {
+        
+    }
+
+    -- TODO in general, complain about expressions without side effects
+    -- e.g. pure numbers / strings etc. check for class / assignments / overloaded [] . operators???
+    
+    ---
 
 }
 
