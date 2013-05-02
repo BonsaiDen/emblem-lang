@@ -1,2 +1,2 @@
-string bar = 'Hello World';
-export bar;
+string bar = 'Hello World'
+export bar

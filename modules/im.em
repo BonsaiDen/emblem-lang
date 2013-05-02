@@ -1,12 +1,12 @@
-import modules.ex.name as foo;
+import modules.ex.name as foo
 
-import modules.ex.name;
+import modules.ex.name
 
-import modules.ex;
+import modules.ex
 
-string other = foo;
+string other = foo
 
-import modules.global as g;
+import modules.global as g
 
 
-string f = g + '';
+string f = g + ''

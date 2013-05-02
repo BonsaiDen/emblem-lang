@@ -1,4 +1,4 @@
-string name = 'Test';
+string name = 'Test'
 
-export name as *;
+export name as *
 
