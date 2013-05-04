@@ -5,6 +5,7 @@ var Compiler = require('./lib/compiler/Compiler');
 var emblem = new Compiler();
 
 // Test name resolving
-emblem.getModule('modules.mod'); // File
+emblem.getModule('test.primitives'); // File
+emblem.getModule('test.statements'); // File
 //emblem.getModule('modules.im'); // File
 
