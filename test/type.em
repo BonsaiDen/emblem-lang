@@ -1,12 +1,36 @@
+void(int, int) callback
+
+void foo(int a, int b) {
+    
+}
+
+void get(void(int error, string data) callback) {
+    
+}
+
+
 type Class {
-    private int id
+    int id
+    public int getId() {
+        ret @id
+    }
 }
 
 type SubClass[Class] {
-    private int id
+    int id
 }
 
-struct foo {
+struct Node {
+    mutable int id
+    string name = 'Foo'
+    -- no modifiers except mutable
+}
+
+interface aNode {
+    -- no modifiers allowed, all interface data MUST be public
+}
+
+void getNodeName(aNode node) {
     
 }
 
